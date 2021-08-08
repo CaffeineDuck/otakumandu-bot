@@ -1,3 +1,4 @@
+import logging
 import os
 
 from bot import OtakuBot
@@ -7,9 +8,9 @@ os.environ.setdefault("JISHAKU_HIDE", "1")
 os.environ.setdefault("JISHAKU_RETAIN", "1")
 os.environ.setdefault("JISHAKU_NO_UNDERSCORE", "1")
 
-cogs = (
-    'bot.cogs.welcome',
-)
+logging.basicConfig(level=logging.INFO)
+
+cogs = ("bot.cogs.welcome",)
 
 if __name__ == "__main__":
     bot = OtakuBot(bot_config.prefix, cogs, True)
