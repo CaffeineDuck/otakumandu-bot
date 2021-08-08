@@ -3,3 +3,7 @@
 
 # Python Stuffs
 __pycache__/
+
+# Tortoise Stuffs
+migrations/
+aerich.ini
