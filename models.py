@@ -1,4 +1,3 @@
-from discord import Color
 from tortoise import Model, fields
 
 
@@ -17,3 +16,13 @@ class WelcomeModel(Model):
     class Meta:
         table = "welcomes"
         description = "Contains data about welcome message configuration"
+
+
+class InviteModel(Model):
+    code = fields.TextField(pk=True)
+    inviter = fields.BigIntField()
+    uses = fields.IntField(default=0)
+
+    class Meta:
+        table = "invites"
+        description = "Contains data about user invites and their uses"

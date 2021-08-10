@@ -10,7 +10,7 @@ os.environ.setdefault("JISHAKU_NO_UNDERSCORE", "1")
 
 logging.basicConfig(level=logging.INFO)
 
-cogs = ("bot.cogs.welcome",)
+cogs = ("bot.cogs.welcome", "bot.cogs.invites")
 
 if __name__ == "__main__":
     bot = OtakuBot(bot_config.prefix, cogs, True)
