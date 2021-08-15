@@ -4,8 +4,8 @@ from discord.ext import commands
 from bot import OtakuBot
 from models import InviteModel
 
-INVITE_ROLE = {"873575576378699787": 874490815710396447}
-REQUIRED_INVITES = {"873575576378699787": 3}
+INVITE_ROLE = {"873575576378699787": 876335495003668480}
+REQUIRED_INVITES = {"873575576378699787": 5}
 
 
 class Invite(commands.Cog):
