@@ -1,3 +1,4 @@
+from typing import Optional
 import discord
 from discord.ext import commands
 
@@ -54,6 +55,15 @@ class Invite(commands.Cog):
             await self.update_invites(ctx.guild)
 
             await ctx.send("Invites have been fetched and updated!")
+
+    @commands.command(name='invites')
+    async def user_invites(self, ctx:commands.Context, member: Optional[discord.Member]) -> None:
+        member = member or ctx.author
+
+        invite_models = await InviteModel.filter(inviter=member.id)
+        uses = sum([invite_model.uses for invite_model in invite_models])
+
+        await ctx.send(f'{member} has `{uses}` valid invites!')
 
 
 def setup(bot: OtakuBot) -> None:
