@@ -4,8 +4,8 @@ from discord.ext import commands
 from bot import OtakuBot
 from models import InviteModel
 
-INVITE_ROLE = 874490815710396447
-REQUIRED_INVITES = 3
+INVITE_ROLE = {"873575576378699787": 874490815710396447}
+REQUIRED_INVITES = {"873575576378699787": 3}
 
 
 class Invite(commands.Cog):
@@ -19,7 +19,7 @@ class Invite(commands.Cog):
     @commands.Cog.listener()
     async def on_completing_invite_reqs(self, invite: discord.Invite) -> None:
         user = await invite.guild.fetch_member(invite.inviter.id)
-        role = invite.guild.get_role(INVITE_ROLE)
+        role = invite.guild.get_role(INVITE_ROLE.get(str(invite.guild.id)))
         await user.add_roles(role)
 
     @commands.Cog.listener()
@@ -30,7 +30,7 @@ class Invite(commands.Cog):
         invite_models = await InviteModel.filter(inviter=invite.inviter.id)
         uses = sum([invite_model.uses for invite_model in invite_models])
 
-        if uses >= REQUIRED_INVITES:
+        if uses >= REQUIRED_INVITES.get(str(invite.guild.id)):
             self.bot.dispatch("completing_invite_reqs", invite)
 
     async def update_invites(self, guild: discord.Guild) -> None:
