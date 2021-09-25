@@ -21,7 +21,7 @@ class Welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
-        if member.guild.id != bot_config.server_id:
+        if member.guild.id != bot_config.server_id or not bot_config.send_welcome:
             return
 
         welcome_model = await WelcomeModel.get_or_none(guild_id=member.guild.id)

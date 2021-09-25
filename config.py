@@ -6,6 +6,9 @@ class BotConfig(BaseSettings):
     prefix: str
     server_id: int
     bot_token: str
+    invite_req: int
+    invite_role: int
+    send_welcome: bool
 
     class Config:
         env_file = ".env"

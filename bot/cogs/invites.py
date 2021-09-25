@@ -1,3 +1,4 @@
+from config import bot_config
 from typing import Optional
 import discord
 from discord.ext import commands
@@ -5,8 +6,8 @@ from discord.ext import commands
 from bot import OtakuBot
 from models import InviteModel
 
-INVITE_ROLE = {"873575576378699787": 874490815710396447}
-REQUIRED_INVITES = {"873575576378699787": 3}
+INVITE_ROLE = {str(bot_config.server_id): bot_config.invite_role}
+REQUIRED_INVITES = {str(bot_config.server_id): bot_config.invite_req}
 
 class Invite(commands.Cog):
     def __init__(self, bot: OtakuBot) -> None:
