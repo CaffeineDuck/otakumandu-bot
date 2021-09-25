@@ -50,6 +50,7 @@ class Invite(commands.Cog):
             await self.handle_user_invites(invite)
 
     @commands.command(name="fetchinvites")
+    @commands.has_permissions(administrator=True)
     async def fetch_invites(self, ctx: commands.Context) -> None:
         async with ctx.typing():
             await self.update_invites(ctx.guild)
